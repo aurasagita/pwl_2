@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,8 +38,26 @@ Route::get('/about', [PageController::class, 'about']);
 Route::get('/articles/{id}', [PageController::class, 'article']);
 
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'home']);
     
 Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/article', [ArticleController::class, 'index']);
+
+// ------------------------------------------------------------------------------------------------
+
+Route::get('/', [CompanyController::class, 'index']);
+
+Route::prefix('product')->group(function () {
+   Route::get('/list',[CompanyController::class, 'product']);
+ });
+
+Route::get('/news/{param}', [CompanyController::class, 'news']);
+
+ Route::prefix('program')->group(function () {
+  Route::get('/list', [CompanyController::class, 'program']);
+ });
+
+ Route::get('/aboutus', [CompanyController::class, 'aboutus']);
+
+ Route::resource('/index', CompanyController::class);
