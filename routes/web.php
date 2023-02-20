@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
   //  });    
 
 //Route::get('/articles/{id} ', function ($id) {
-  // echo "Halaman Artikel dengan ID:".$id;
+  // echo "Halaman Artikel dengan ID:".$id;jjjj
 
 //});
 
