@@ -11,9 +11,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function about()
+    public function index()
     {
-        //
+        return "Selamat Datang Aura";
     }
 
     /**

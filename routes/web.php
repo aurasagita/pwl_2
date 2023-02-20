@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,10 @@ Route::get('/', [PageController::class, 'index']);
 Route::get('/about', [PageController::class, 'about']);
 
 Route::get('/articles/{id}', [PageController::class, 'article']);
+
+
+Route::get('/', [HomeController::class, 'index']);
+    
+Route::get('/about', [AboutController::class, 'index']);
+
+Route::get('/article', [ArticleController::class, 'index']);

@@ -13,7 +13,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        //
+        return "NIM: 2141720102, Nama: Aura Sagita Ashilah";
     }
 
     /**
