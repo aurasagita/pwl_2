@@ -3,6 +3,8 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContactUsBladeController;
+use App\Http\Controllers\HomeBladeControllerr;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
@@ -31,33 +33,51 @@ use Illuminate\Support\Facades\Route;
 
 //});
 
-Route::get('/', [PageController::class, 'index']);
+// Route::get('/', [PageController::class, 'index']);
     
-Route::get('/about', [PageController::class, 'about']);
+// Route::get('/about', [PageController::class, 'about']);
 
-Route::get('/articles/{id}', [PageController::class, 'article']);
+// Route::get('/articles/{id}', [PageController::class, 'article']);
 
 
-Route::get('/home', [HomeController::class, 'home']);
+// Route::get('/home', [HomeController::class, 'home']);
     
-Route::get('/about', [AboutController::class, 'index']);
+// Route::get('/about', [AboutController::class, 'index']);
 
-Route::get('/article', [ArticleController::class, 'index']);
+// Route::get('/article', [ArticleController::class, 'index']);
 
-// ------------------------------------------------------------------------------------------------
+// // ------------------------------------------------------------------------------------------------
 
-Route::get('/', [CompanyController::class, 'index']);
+// Route::get('/', [CompanyController::class, 'index']);
 
-Route::prefix('product')->group(function () {
-   Route::get('/list',[CompanyController::class, 'product']);
- });
+// Route::prefix('product')->group(function () {
+//    Route::get('/list',[CompanyController::class, 'product']);
+//  });
 
-Route::get('/news/{param}', [CompanyController::class, 'news']);
+// Route::get('/news/{param}', [CompanyController::class, 'news']);
 
- Route::prefix('program')->group(function () {
-  Route::get('/list', [CompanyController::class, 'program']);
- });
+//  Route::prefix('program')->group(function () {
+//   Route::get('/list', [CompanyController::class, 'program']);
+//  });
 
- Route::get('/aboutus', [CompanyController::class, 'aboutus']);
+//  Route::get('/aboutus', [CompanyController::class, 'aboutus']);
 
- Route::resource('/index', CompanyController::class);
+//  Route::resource('/index', CompanyController::class);
+ // ------------------------------------------------------------------------------------------------
+
+ Route::get('/homeblade', [HomeBladeControllerr::class, 'index']);
+
+ Route::prefix('product')->group(function () {
+     Route::get('/listblade',[HomeBladeControllerr::class, 'product']);
+  });
+
+  Route::get('/newsblade/{param}', [HomeBladeControllerr::class, 'news']);
+
+  Route::prefix('program')->group(function () {
+     Route::get('/listprogram', [HomeBladeControllerr::class, 'program']);
+    });
+
+  Route::get('/aboutuscan', [HomeBladeControllerr::class, 'aboutus']);
+
+  Route::resource('contactus', ContactUsBladeController::class);
+
