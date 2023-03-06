@@ -6,22 +6,14 @@ use Illuminate\Http\Request;
 
 class HomeBladeControllerr extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         return view('home', ['teks' => 'Selamat Datang Di Beranda Home']);
     
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function product()
     {
        return view('product',
@@ -35,12 +27,7 @@ class HomeBladeControllerr extends Controller
        );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function news($n)
     {
         return view('news',
@@ -54,12 +41,7 @@ class HomeBladeControllerr extends Controller
        );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function program()
     {
         return view('program',
@@ -73,12 +55,7 @@ class HomeBladeControllerr extends Controller
        );
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function aboutus()
     {
         return view('about-us',
@@ -89,13 +66,7 @@ class HomeBladeControllerr extends Controller
        );
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function bill()
     {
    

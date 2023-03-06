@@ -6,8 +6,10 @@ use App\Http\Controllers\BerandanController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactUsBladeController;
 use App\Http\Controllers\DashBoardController;
+use App\Http\Controllers\HobiController;
 use App\Http\Controllers\HomeBladeControllerr;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PengalamanKuliahController;
 use App\Http\Controllers\ProfileController;
@@ -84,12 +86,16 @@ use Illuminate\Support\Facades\Route;
 //   Route::get('/aboutuscan', [HomeBladeControllerr::class, 'aboutus']);
 
 //   Route::resource('contactus', ContactUsBladeController::class);
-// ==================================================================================================
+// // ==================================================================================================
 
 // Route::get('/', [BerandanController::class, 'index']);
-Route::get('/p2', function(){
-  return view('layout.template');
-});
-Route::get('/dashboard', [DashBoardController::class, 'index']);
-Route::get('/profile', [ProfileController::class, 'index']);
-Route::get('/kuliah', [PengalamanKuliahController::class, 'index']);
+// Route::get('/p2', function(){
+//   return view('layout.template');
+// });
+// Route::get('/dashboard', [DashBoardController::class, 'index']);
+// Route::get('/profile', [ProfileController::class, 'index']);
+// Route::get('/kuliah', [PengalamanKuliahController::class, 'index']);
+
+// ========================================================================================\
+Route::get('/kendaraan', [KendaraanController::class, 'index']);
+Route::get('/hobi', [HobiController::class, 'index']);

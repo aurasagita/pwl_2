@@ -70,7 +70,7 @@ class CompanyController extends Controller
         ";
     }
 
-    public function index()
+    public function index1()
     {
         return 'LAMAN KONTAK KAMI 
         <br>
