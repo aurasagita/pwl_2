@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BerandanController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactUsBladeController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PengalamanKuliahController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -92,10 +94,21 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/p2', function(){
 //   return view('layout.template');
 // });
-// Route::get('/dashboard', [DashBoardController::class, 'index']);
-// Route::get('/profile', [ProfileController::class, 'index']);
-// Route::get('/kuliah', [PengalamanKuliahController::class, 'index']);
+
 
 // ========================================================================================\
-Route::get('/kendaraan', [KendaraanController::class, 'index']);
-Route::get('/hobi', [HobiController::class, 'index']);
+
+
+Auth::routes();
+Route::get('/logout', [LoginController::class, 'logout']);
+Route::middleware(['auth'])->group(function () {
+  Route::get('/test', function(){
+      return 'masuk';
+      Route::get('/kendaraan', [KendaraanController::class, 'index']);
+      Route::get('/hobi', [HobiController::class, 'index']);
+      Route::get('/dashboard', [DashBoardController::class, 'index']);
+      Route::get('/profile', [ProfileController::class, 'index']);
+      Route::get('/kuliah', [PengalamanKuliahController::class, 'index']);
+});
+});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
