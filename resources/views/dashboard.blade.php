@@ -33,8 +33,8 @@
 
   @endsection
 
-  {{-- @push('alert')
+  @push('alert')
     <script>
         alert('Welcome To My Website >.<');
     </script>
-  @endpush --}}
+  @endpush
