@@ -11,6 +11,7 @@ use App\Http\Controllers\HobiController;
 use App\Http\Controllers\HomeBladeControllerr;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PengalamanKuliahController;
 use App\Http\Controllers\ProfileController;
@@ -102,13 +103,17 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::middleware(['auth'])->group(function () {
-  Route::get('/test', function(){
-      return 'masuk';
+ 
+      
       Route::get('/kendaraan', [KendaraanController::class, 'index']);
       Route::get('/hobi', [HobiController::class, 'index']);
       Route::get('/dashboard', [DashBoardController::class, 'index']);
       Route::get('/profile', [ProfileController::class, 'index']);
       Route::get('/kuliah', [PengalamanKuliahController::class, 'index']);
-});
+      Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [ProfileController::class, 'index']);
+
+
+

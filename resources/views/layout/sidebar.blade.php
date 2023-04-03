@@ -33,6 +33,12 @@
   </a>
   </li>
   <li class="nav-item">
+    <a href="{{ url('/mahasiswa') }}" class="nav-link">
+    <i class="nav-icon fas fa-th"></i>
+    <p>Mahasiswa</p>
+    </a>
+    </li>
+  <li class="nav-item">
   <a href="{{ url('/profile') }}" class="nav-link">
   <i class="nav-icon fas fa-th"></i>
   <p>Profile</p>
