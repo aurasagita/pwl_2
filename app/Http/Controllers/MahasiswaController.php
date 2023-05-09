@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use App\Models\MahasiswaModel;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('create_mahasiswa')
+        $kelas = Kelas::all();
+        return view('create_mahasiswa', ['kelas'=>$kelas])
                     ->with('url_form', url('/mahasiswa'));
     }
 
@@ -39,20 +41,23 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'nim' => 'required|string|max:10|unique:mahasiswa,nim',
-            'nama' => 'required|string|max:50',
-            'jk' => 'required|in:l,p',
-            'tempat_lahir' => 'required|string|max:50',
-            'tanggal_lahir' => 'required|date',
-            'alamat' => 'required|string|max:255',
-            'hp' => 'required|string|max:15',
+            'nim'=>'required|string|max:10|unique:mahasiswa,nim',
+            'nama'=>'required|string|max:50',
+            'kelas_id'=>'required',
+            'jk'=>'required|in:l,p',
+            'tempat_lahir'=>'required|string|max:50',
+            'tanggal_lahir'=>'required|date',
+            'alamat'=>'required|string|max:255',
+            'hp'=>'required|digits_between:6,15'
         ]);
 
-        $data = MahasiswaModel::create($request->except(['_token']));
-        // jika data berhasil ditambahkan, akan kembali kehalaman utama
+        MahasiswaModel::insert($request->except(['_token']));
+
+        //$data = MahasiswaModel::create($request->except(['_token']));
         return redirect('mahasiswa')
-        ->with('success', 'Mahasiswa Berhasil Ditambahkan');
+            ->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
 
     /**
@@ -61,11 +66,11 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function show(MahasiswaModel $mahasiswa)
+    public function show($id)
     {
-        //
+        $mahasiswa = MahasiswaModel::where('id',$id)->get();
+        return view('mahasiswa.detail', ['Mahasiswa' => $mahasiswa[0]]);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -74,9 +79,10 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        $mahasiswa = MahasiswaModel::find($id);
-        return view('create_mahasiswa')
-            ->with('mhs', $mahasiswa)
+        $mahasiswa = MahasiswaModel::where('id',$id)->get();
+        $kelas = kelas::all();
+        return view('create_mahasiswa', ['kelas'=>$kelas])
+            ->with('mhs', $mahasiswa[0])
             ->with('url_form', url('/mahasiswa/'.$id));
     }
 
@@ -92,6 +98,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim'=>'required|string|max:10|unique:mahasiswa,nim,'.$id,
             'nama'=>'required|string|max:50',
+            'kelas_id'=> 'required',
             'jk'=>'required|in:l,p',
             'tempat_lahir'=>'required|string|max:50',
             'tanggal_lahir'=>'required|date',
@@ -99,7 +106,7 @@ class MahasiswaController extends Controller
             'hp'=>'required|digits_between:6,15'
         ]);
 
-        $data = MahasiswaModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        MahasiswaModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
         return redirect('mahasiswa')
             ->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }

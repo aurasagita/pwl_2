@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nim', 10)->unique();
             $table->string('nama', 50)->nullable();
+            $table->string('nama_kelas', 10)->nullable();
             $table->string('jk', 1)->nullable();
             $table->string('tempat_lahir', 50)->nullable();
             $table->date('tanggal_lahir')->nullable();
