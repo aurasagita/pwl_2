@@ -15,15 +15,14 @@ return new class extends Migration
     {
         Schema::create('mahasiswa_matakuliah', function (Blueprint $table) {
             $table->id();
-            $table->integer('mahasiswa_id')->nullable();
+            $table->unsignedBigInteger('mahasiswa_id')->nullable();
             $table->unsignedBigInteger('matakuliah_id')->nullable();
-            $table->integer('nilai');
-            $table->foreign('mahasiswa_id')->references('nim')->on('mahasiswa');
-            $table->foreign('matakuliah_id')->references('id')->on('matakuliah');
+            $table->integer('nilai')->nullable();
             $table->timestamps();
-        });
 
-        
+            $table->foreign('mahasiswa_id')->references('id')->on('mahasiswa');
+            $table->foreign('matakuliah_id')->references('id')->on('matakuliah');
+        });
     }
 
     /**

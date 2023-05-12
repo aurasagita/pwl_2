@@ -52,8 +52,8 @@
                     <a href="{{url('/mahasiswa/'. $m->id)}}"
                         class="btn btn-sm btn-primary">Show</a>
 
-                    <a href="mahasiswa/nilai/{{url('/mahasiswa/'. $m->nim)}}"
-                         class="btn btn-sm btn-success">Nilai</a>
+                    <a href="{{url('/mahasiswa/nilai/'. $m->id)}}"
+                         class="btn btn-sm btn-success">Nilai Matkul</a>
 
                     <!-- Bikin tombol edit dan delete -->
                     <a href="{{ url('/mahasiswa/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning">edit</a>

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use App\Models\MahasiswaModel;
+use App\Models\MataKuliahModel;
+use App\Models\MhsMatkul;
+use App\Models\MhsMatkulModel;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -68,11 +71,21 @@ class MahasiswaController extends Controller
      */
     public function show($id)
     {
-        $mahasiswa = MahasiswaModel::where('id',$id)->get();
-        return view('mahasiswa.detail', ['Mahasiswa' => $mahasiswa[0]]);
+        $Mahasiswa = MahasiswaModel::where('id',$id)->get();
+        return view('Mahasiswa.detail', ['Mahasiswa' => $Mahasiswa[0]]);
     }
-    /**
-     * Show the form for editing the specified resource.
+    public function nilai($id)
+    {
+        $Mahasiswa = MahasiswaModel::where('id',$id)->get();
+        $matkul = MhsMatkulModel::where('mahasiswa_id',$id)->get();
+        return view ('Mahasiswa.matakuliah',  ['Mahasiswa' => $Mahasiswa[0]])
+                // -with('Mahasiswa',$Mahasiswa[0])
+                ->with('matkul',$matkul);
+                
+                
+    }
+    /**;
+     * Show the form for editing the specified resource.,
      *
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
