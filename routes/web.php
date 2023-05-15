@@ -112,6 +112,7 @@ Route::middleware(['auth'])->group(function () {
       Route::get('/kuliah', [PengalamanKuliahController::class, 'index']);
       Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
       Route::get('/mahasiswa/nilai/{id}',[MahasiswaController::class,'nilai']);
+      Route::resource('articles', ArticleController::class);
 
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
