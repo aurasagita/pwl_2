@@ -114,6 +114,7 @@ Route::middleware(['auth'])->group(function () {
       Route::get('/mahasiswa/nilai/{id}',[MahasiswaController::class,'nilai']);
       Route::resource('articles', ArticleController::class);
       Route::get('/article/cetak_pdf', [ArticleController::class, 'cetak_pdf']);
+      Route::get('/mahasiswa/cetak_pdf/{id}', [MahasiswaController::class, 'cetak_pdf']);
 
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

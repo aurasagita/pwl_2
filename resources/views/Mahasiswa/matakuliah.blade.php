@@ -38,6 +38,7 @@
                         </tr>
                     </thead>
                     </tbody>
+
                     @if($matkul->count()>0)
               @foreach($matkul as $row)
               <tr>
@@ -57,7 +58,7 @@
             </tr>
             @endif
                 </table>
-
+                <a href="{{ url('/mahasiswa/cetak_pdf/' . $Mahasiswa->id) }}" class="btn btn-primary">Cetak KRS</a>
             </ul>
         </div>
     </div>
