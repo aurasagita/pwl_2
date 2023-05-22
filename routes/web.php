@@ -99,26 +99,26 @@ use Illuminate\Support\Facades\Route;
 
 // ========================================================================================\
 
-
 Auth::routes();
-Route::get('/logout', [LoginController::class, 'logout']);
-Route::middleware(['auth'])->group(function () {
+// Route::get('/logout', [LoginController::class, 'logout']);
+// Route::middleware(['auth'])->group(function () {
  
       
-      Route::get('/kendaraan', [KendaraanController::class, 'index']);
-      Route::get('/hobi', [HobiController::class, 'index']);
-      Route::get('/dashboard', [DashBoardController::class, 'index']);
-      Route::get('/profile', [ProfileController::class, 'index']);
-      Route::get('/kuliah', [PengalamanKuliahController::class, 'index']);
-      Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
-      Route::get('/mahasiswa/nilai/{id}',[MahasiswaController::class,'nilai']);
-      Route::resource('articles', ArticleController::class);
-      Route::get('/article/cetak_pdf', [ArticleController::class, 'cetak_pdf']);
-      Route::get('/mahasiswa/cetak_pdf/{id}', [MahasiswaController::class, 'cetak_pdf']);
+//       Route::get('/kendaraan', [KendaraanController::class, 'index']);
+//       Route::get('/hobi', [HobiController::class, 'index']);
+//       Route::get('/dashboard', [DashBoardController::class, 'index']);
+//       Route::get('/profile', [ProfileController::class, 'index']);
+//       Route::get('/kuliah', [PengalamanKuliahController::class, 'index']);
+//       Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
+//       Route::get('/mahasiswa/nilai/{id}',[MahasiswaController::class,'nilai']);
+//       Route::resource('articles', ArticleController::class);
+//       Route::get('/article/cetak_pdf', [ArticleController::class, 'cetak_pdf']);
+//       Route::get('/mahasiswa/cetak_pdf/{id}', [MahasiswaController::class, 'cetak_pdf']);
 
-});
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [ProfileController::class, 'index']);
+// });
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/', [ProfileController::class, 'index']);
 
+// 
 
 
